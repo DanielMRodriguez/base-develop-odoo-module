@@ -282,10 +282,13 @@ Si algo salió mal y quieres empezar completamente de cero:
 docker compose down -v
 
 # Eliminar carpeta de datos
-Remove-Item -Recurse -Force odoo-data
+Remove-Item -Recurse -Force odoo-dataw
 
 # Crear de nuevo
 New-Item -ItemType Directory -Force -Path odoo-data
+
+# Reiniciar el modulo [TU_MODULO] en la base de datos [TU_DB]
+docker compose exec odoo odoo -d [TU_DB] -u [TU_MODULO] --stop-after-init
 
 # Levantar servicios
 docker compose up -d
